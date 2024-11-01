@@ -1,11 +1,28 @@
-import React from 'react';
+import { useLocation } from 'react-router-dom';
 
+// eslint-disable-next-line react/prop-types
 const HeaderDashBoard = ({ Bell, Search }) =>{
+      const location = useLocation();
+        const getTitle = () => {
+        switch (location.pathname) {
+            case '/dashboard':
+                return 'Dashboard';
+            case '/manage-product':
+                return 'Manage Product';
+            case '/manage-staff':
+                return 'Manage Staff';
+            case '/revenue':
+                return 'Revenue Summary';
+            case '/settings':    
+            default:
+                return 'Page';
+        }
+    };
     return(
           <header className="bg-white shadow-sm sticky top-0 z-50">
                     <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
                         <h1 className="text-2xl font-semibold text-gray-900">
-                            Dashboard
+                             {getTitle()}
                         </h1>
                         <div className="flex items-center">
                             <div className="relative">

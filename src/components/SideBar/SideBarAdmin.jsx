@@ -1,6 +1,9 @@
+import { useNavigate, useLocation } from "react-router-dom";
 
-import React from "react"
-const SideBarAdmin = () =>{
+const SideBarAdmin = () => {
+    const navigate = useNavigate();
+    const location = useLocation(); 
+
     return (
         <div className="w-64 bg-white shadow-md">
             <div className="p-4">
@@ -8,28 +11,44 @@ const SideBarAdmin = () =>{
             </div>
             <nav className="mt-6">
                 <a
-                    href="#"
-                    className="block py-2 px-4 text-sm bg-blue-100 text-blue-600"
+                    onClick={() => navigate("/dashboard")}
+                    className={`block py-2 px-4 text-sm ${
+                        location.pathname === "/dashboard" 
+                            ? "bg-blue-100 text-blue-600" 
+                            : "text-gray-600 hover:bg-gray-100"
+                    } cursor-pointer`}
                 >
                     Dashboard
                 </a>
                 <a
-                    href="#"
-                    className="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100"
+                    onClick={() => navigate("/manage-product")}
+                    className={`block py-2 px-4 text-sm ${
+                        location.pathname === "/manage-product" 
+                            ? "bg-blue-100 text-blue-600" 
+                            : "text-gray-600 hover:bg-gray-100"
+                    } cursor-pointer`}
                 >
-                    Toy Rentals
+                   Manage Product
                 </a>
                 <a
-                    href="#"
-                    className="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100"
+                    onClick={() => navigate("/manage-staff")}
+                    className={`block py-2 px-4 text-sm ${
+                        location.pathname === "/manage-staff" 
+                            ? "bg-blue-100 text-blue-600" 
+                            : "text-gray-600 hover:bg-gray-100"
+                    } cursor-pointer`}
                 >
-                    Manage Inventory
+                    Manage Staff
                 </a>
                 <a
-                    href="#"
-                    className="block py-2 px-4 text-sm text-gray-600 hover:bg-gray-100"
+                    onClick={() => navigate("/revenue")}
+                    className={`block py-2 px-4 text-sm ${
+                        location.pathname === "/revenue" 
+                            ? "bg-blue-100 text-blue-600" 
+                            : "text-gray-600 hover:bg-gray-100"
+                    } cursor-pointer`}
                 >
-                    Customer Reviews
+                    Revenue Summary
                 </a>
             </nav>
             <div className="mt-6 px-4">
@@ -64,6 +83,7 @@ const SideBarAdmin = () =>{
                 </nav>
             </div>
         </div>
-    )
+    );
 }
-export default SideBarAdmin
+
+export default SideBarAdmin;
